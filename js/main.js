@@ -94,6 +94,6 @@ typing.addEventListener("input",ingame)
 inputs.addEventListener("click",()=> typing.focus())
 document.addEventListener("keypress",function(event) {
   if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
-    typing.focus()
+    typing
   }
 });
