@@ -43,7 +43,7 @@ let guess=document.querySelector(".guess-left span")
 let wordChoose,maxGuess,correct=[],incorrect=[];
 function randomWord() {
   let random = words[Math.floor(Math.random() * words.length)];
-   wordChoose=random.word
+   wordChoose=random.word.toLowerCase()
    maxGuess=8,correct=[],incorrect=[];
   hint.innerHTML=random.hint;
   guess.innerHTML=maxGuess
@@ -57,7 +57,7 @@ function randomWord() {
 }
 randomWord()
 function ingame(e){
-  let value=e.target.value
+  let value=e.target.value.toLowerCase()
   if (value.match(/^[A-Za-z]+$/)&& !incorrect.includes(value)&& !correct.includes(value)) {
     if(wordChoose.includes(value)){
       for (let i = 0; i < wordChoose.length; i++) {
@@ -83,7 +83,6 @@ function ingame(e){
   }else if (maxGuess<1) {
     alert(`sorry you can't fount the word ${wordChoose.toUpperCase()}`)
     for (let i = 0; i < wordChoose.length; i++) {
-      
         inputs.querySelectorAll("input")[i].value=wordChoose[i]
     }
   }
@@ -92,8 +91,5 @@ function ingame(e){
 reset.addEventListener("click",randomWord)
 typing.addEventListener("input",ingame)
 inputs.addEventListener("click",()=> typing.focus())
-document.addEventListener("keypress",function(event) {
-  if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
-    typing
-  }
-});
+document.addEventListener("keypress",()=> typing.focus())
+
