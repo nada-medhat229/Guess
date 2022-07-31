@@ -91,6 +91,6 @@ function ingame(e){
 }
 reset.addEventListener("click",randomWord)
 typing.addEventListener("input",ingame)
-inputs.addEventListener("click",()=> typing.focus())
+inputs.addEventListener("keypress",()=> typing.focus())
 document.addEventListener("keypress",()=> typing.focus(),true)
 
